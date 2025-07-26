@@ -1,15 +1,22 @@
 // TEMPORARY DATA
-
+// "use client"
+// import { useParams } from "next/navigation";
 export let role = "admin";
+
+
+
+
+
+
 
 export const teachersData = [
   {
     id: 1,
-    teacherId: "1234567890",
+    teacherId: "100000001",
     name: "John Doe",
     email: "john@doe.com",
     photo:
-      "https://images.pexels.com/photos/2888150/pexels-photo-2888150.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx1HdpVRdnnKYMk_whlRcxFYaS0b4Q-rnsYA&s",
     phone: "1234567890",
     subjects: ["Math", "Geometry"],
     classes: ["1B", "2A", "3C"],
@@ -17,11 +24,11 @@ export const teachersData = [
   },
   {
     id: 2,
-    teacherId: "1234567890",
+    teacherId: "100000002",
     name: "Jane Doe",
     email: "jane@doe.com",
     photo:
-      "https://images.pexels.com/photos/936126/pexels-photo-936126.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://www.aljazeera.net/wp-content/uploads/2002/01/ff58ed69-e1cd-4092-bb42-c0ff4589a95a.jpeg?resize=350%2C250&quality=80",
     phone: "1234567890",
     subjects: ["Physics", "Chemistry"],
     classes: ["5A", "4B", "3C"],
@@ -29,11 +36,11 @@ export const teachersData = [
   },
   {
     id: 3,
-    teacherId: "1234567890",
+    teacherId: "100000003",
     name: "Mike Geller",
     email: "mike@geller.com",
     photo:
-      "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR34fdYPD8ugkmApu1FiTlfbtRw7WyWuESVIg&s",
     phone: "1234567890",
     subjects: ["Biology"],
     classes: ["5A", "4B", "3C"],
@@ -41,11 +48,11 @@ export const teachersData = [
   },
   {
     id: 4,
-    teacherId: "1234567890",
+    teacherId: "100000004",
     name: "Jay French",
     email: "jay@gmail.com",
     photo:
-      "https://images.pexels.com/photos/1187765/pexels-photo-1187765.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Faisal_II_of_Iraq%2C_1950s.jpg/250px-Faisal_II_of_Iraq%2C_1950s.jpg",
     phone: "1234567890",
     subjects: ["History"],
     classes: ["5A", "4B", "3C"],
@@ -53,11 +60,11 @@ export const teachersData = [
   },
   {
     id: 5,
-    teacherId: "1234567890",
+    teacherId: "100000005",
     name: "Jane Smith",
     email: "jane@gmail.com",
     photo:
-      "https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMzEb5es4WQbsK2YeU9ggvPzfJmKO0uIoYXA&s",
     phone: "1234567890",
     subjects: ["Music", "History"],
     classes: ["5A", "4B", "3C"],
@@ -65,11 +72,11 @@ export const teachersData = [
   },
   {
     id: 6,
-    teacherId: "1234567890",
+    teacherId: "100000006",
     name: "Anna Santiago",
     email: "anna@gmail.com",
     photo:
-      "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://pbs.twimg.com/profile_images/1687471487144316928/98bF2lvs_400x400.jpg",
     phone: "1234567890",
     subjects: ["Physics"],
     classes: ["5A", "4B", "3C"],
@@ -77,11 +84,11 @@ export const teachersData = [
   },
   {
     id: 7,
-    teacherId: "1234567890",
+    teacherId: "100000007",
     name: "Allen Black",
     email: "allen@black.com",
     photo:
-      "https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVB98UNbpojDGVlmAvVQLQwBcOyNcBA4RpaxF9S_oqKWjabyOfH8ZwaXE1gv49yD5ZImk&usqp=CAU",
     phone: "1234567890",
     subjects: ["English", "Spanish"],
     classes: ["5A", "4B", "3C"],
@@ -89,11 +96,11 @@ export const teachersData = [
   },
   {
     id: 8,
-    teacherId: "1234567890",
+    teacherId: "100000008",
     name: "Ophelia Castro",
     email: "ophelia@castro.com",
     photo:
-      "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVSYB2Q-RtWveg-36oC8n8BZgTMc0soVO5Sw&s",
     phone: "1234567890",
     subjects: ["Math", "Geometry"],
     classes: ["5A", "4B", "3C"],
@@ -101,11 +108,11 @@ export const teachersData = [
   },
   {
     id: 9,
-    teacherId: "1234567890",
+    teacherId: "100000009",
     name: "Derek Briggs",
     email: "derek@briggs.com",
     photo:
-      "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZbkUmBmBzi78TMbrdVfvgQbKkS91VTAdFMw&s",
     phone: "1234567890",
     subjects: ["Literature", "English"],
     classes: ["5A", "4B", "3C"],
@@ -113,11 +120,11 @@ export const teachersData = [
   },
   {
     id: 10,
-    teacherId: "1234567890",
+    teacherId: "100000010",
     name: "John Glover",
     email: "john@glover.com",
     photo:
-      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoUuF6obJCwR8MsqQhWzmvy0S40h0YnCLZMg&s",
     phone: "1234567890",
     subjects: ["Biology"],
     classes: ["5A", "4B", "3C"],
@@ -128,7 +135,7 @@ export const teachersData = [
 export const studentsData = [
   {
     id: 1,
-    studentId: "1234567890",
+    studentId: "987654321", // Changed and randomized
     name: "John Doe",
     email: "john@doe.com",
     photo:
@@ -140,7 +147,7 @@ export const studentsData = [
   },
   {
     id: 2,
-    studentId: "1234567890",
+    studentId: "123098765", // Changed and randomized
     name: "Jane Doe",
     email: "jane@doe.com",
     photo:
@@ -152,7 +159,7 @@ export const studentsData = [
   },
   {
     id: 3,
-    studentId: "1234567890",
+    studentId: "456789012", // Changed and randomized
     name: "Mike Geller",
     email: "mike@geller.com",
     photo:
@@ -164,7 +171,7 @@ export const studentsData = [
   },
   {
     id: 4,
-    studentId: "1234567890",
+    studentId: "098765432", // Changed and randomized
     name: "Jay French",
     email: "jay@gmail.com",
     photo:
@@ -176,7 +183,7 @@ export const studentsData = [
   },
   {
     id: 5,
-    studentId: "1234567890",
+    studentId: "321098765", // Changed and randomized
     name: "Jane Smith",
     email: "jane@gmail.com",
     photo:
@@ -188,7 +195,7 @@ export const studentsData = [
   },
   {
     id: 6,
-    studentId: "1234567890",
+    studentId: "654321098", // Changed and randomized
     name: "Anna Santiago",
     email: "anna@gmail.com",
     photo:
@@ -200,7 +207,7 @@ export const studentsData = [
   },
   {
     id: 7,
-    studentId: "1234567890",
+    studentId: "789012345", // Changed and randomized
     name: "Allen Black",
     email: "allen@black.com",
     photo:
@@ -212,7 +219,7 @@ export const studentsData = [
   },
   {
     id: 8,
-    studentId: "1234567890",
+    studentId: "012345678", // Changed and randomized
     name: "Ophelia Castro",
     email: "ophelia@castro.com",
     photo:
@@ -224,7 +231,7 @@ export const studentsData = [
   },
   {
     id: 9,
-    studentId: "1234567890",
+    studentId: "901234567", // Changed and randomized
     name: "Derek Briggs",
     email: "derek@briggs.com",
     photo:
@@ -236,7 +243,7 @@ export const studentsData = [
   },
   {
     id: 10,
-    studentId: "1234567890",
+    studentId: "234567890", // Changed and randomized
     name: "John Glover",
     email: "john@glover.com",
     photo:
@@ -921,143 +928,139 @@ export const calendarEvents = [
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 12, 8, 0),
-    end: new Date(2024, 7, 12, 8, 45),
+    start: new Date(2025, 6, 21, 8, 0), // تموز 21
+    end: new Date(2025, 6, 21, 8, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 12, 9, 0),
-    end: new Date(2024, 7, 12, 9, 45),
+    start: new Date(2025, 6, 21, 9, 0),
+    end: new Date(2025, 6, 21, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 12, 10, 0),
-    end: new Date(2024, 7, 12, 10, 45),
+    start: new Date(2025, 6, 21, 10, 0),
+    end: new Date(2025, 6, 21, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 12, 11, 0),
-    end: new Date(2024, 7, 12, 11, 45),
+    start: new Date(2025, 6, 21, 11, 0),
+    end: new Date(2025, 6, 21, 11, 45),
   },
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 12, 13, 0),
-    end: new Date(2024, 7, 12, 13, 45),
+    start: new Date(2025, 6, 21, 13, 0),
+    end: new Date(2025, 6, 21, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 12, 14, 0),
-    end: new Date(2024, 7, 12, 14, 45),
+    start: new Date(2025, 6, 21, 14, 0),
+    end: new Date(2025, 6, 21, 14, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 13, 9, 0),
-    end: new Date(2024, 7, 13, 9, 45),
+    start: new Date(2025, 6, 22, 9, 0), // تموز 22
+    end: new Date(2025, 6, 22, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 13, 10, 0),
-    end: new Date(2024, 7, 13, 10, 45),
+    start: new Date(2025, 6, 22, 10, 0),
+    end: new Date(2025, 6, 22, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 13, 11, 0),
-    end: new Date(2024, 7, 13, 11, 45),
+    start: new Date(2025, 6, 22, 11, 0),
+    end: new Date(2025, 6, 22, 11, 45),
   },
-
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 13, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
+    start: new Date(2025, 6, 22, 14, 0),
+    end: new Date(2025, 6, 22, 14, 45),
   },
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 14, 8, 0),
-    end: new Date(2024, 7, 14, 8, 45),
+    start: new Date(2025, 6, 23, 8, 0), // تموز 23
+    end: new Date(2025, 6, 23, 8, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 14, 10, 0),
-    end: new Date(2024, 7, 14, 10, 45),
+    start: new Date(2025, 6, 23, 10, 0),
+    end: new Date(2025, 6, 23, 10, 45),
   },
-
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 14, 13, 0),
-    end: new Date(2024, 7, 14, 13, 45),
+    start: new Date(2025, 6, 23, 13, 0),
+    end: new Date(2025, 6, 23, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 14, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
+    start: new Date(2025, 6, 23, 14, 0),
+    end: new Date(2025, 6, 23, 14, 45), 
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 15, 9, 0),
-    end: new Date(2024, 7, 15, 9, 45),
+    start: new Date(2025, 6, 24, 9, 0), 
+    end: new Date(2025, 6, 24, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 15, 10, 0),
-    end: new Date(2024, 7, 15, 10, 45),
+    start: new Date(2025, 6, 24, 10, 0),
+    end: new Date(2025, 6, 24, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 15, 11, 0),
-    end: new Date(2024, 7, 15, 11, 45),
+    start: new Date(2025, 6, 24, 11, 0),
+    end: new Date(2025, 6, 24, 11, 45),
   },
-
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 15, 14, 0),
-    end: new Date(2024, 7, 15, 14, 45),
+    start: new Date(2025, 6, 24, 14, 0),
+    end: new Date(2025, 6, 24, 14, 45),
   },
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 16, 8, 0),
-    end: new Date(2024, 7, 16, 8, 45),
+    start: new Date(2025, 6, 25, 8, 0), // تموز 25
+    end: new Date(2025, 6, 25, 8, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 16, 9, 0),
-    end: new Date(2024, 7, 16, 9, 45),
+    start: new Date(2025, 6, 25, 9, 0),
+    end: new Date(2025, 6, 25, 9, 45),
   },
-
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 16, 11, 0),
-    end: new Date(2024, 7, 16, 11, 45),
+    start: new Date(2025, 6, 25, 11, 0),
+    end: new Date(2025, 6, 25, 11, 45),
   },
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 16, 13, 0),
-    end: new Date(2024, 7, 16, 13, 45),
+    start: new Date(2025, 6, 25, 13, 0),
+    end: new Date(2025, 6, 25, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 16, 14, 0),
-    end: new Date(2024, 7, 16, 14, 45),
+    start: new Date(2025, 6, 25, 14, 0),
+    end: new Date(2025, 6, 25, 14, 45),
   },
 ];

@@ -1,110 +1,127 @@
+import Link from "next/link";
+import Image from "next/image";
+import { role } from "@/lib/data";
+import { CiHome } from "react-icons/ci";
+import { FaChalkboardTeacher, FaUsers, FaUserGraduate, FaUserFriends } from "react-icons/fa";
+import { MdSubject, MdClass } from "react-icons/md";
+import { GiBlackBook } from "react-icons/gi";
+import { BsFileEarmarkTextFill, BsClipboardCheckFill } from "react-icons/bs";
+import { PiExamBold } from "react-icons/pi";
+import { MdOutlineEventNote, MdOutlineMessage } from "react-icons/md";
+import { IoIosMegaphone } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
+import { IoSettingsSharp } from "react-icons/io5";
+import { RiLogoutBoxRFill } from "react-icons/ri";
+
+
 const menuItems = [
   {
     title: "MENU",
     items: [
       {
-        icon: "/home.png",
+        j: CiHome,
         label: "Home",
         href: "/",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/teacher.png",
+        j: FaChalkboardTeacher,
         label: "Teachers",
         href: "/list/teachers",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/student.png",
+        j: FaUserGraduate,
         label: "Students",
         href: "/list/students",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/parent.png",
+        j: FaUserFriends,
         label: "Parents",
         href: "/list/parents",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/subject.png",
+        j: MdSubject,
         label: "Subjects",
         href: "/list/subjects",
         visible: ["admin"],
       },
       {
-        icon: "/class.png",
+        j: MdClass,
         label: "Classes",
         href: "/list/classes",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/lesson.png",
+        j: GiBlackBook,
         label: "Lessons",
         href: "/list/lessons",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/exam.png",
+        j: PiExamBold,
         label: "Exams",
         href: "/list/exams",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assignment.png",
+        j: BsFileEarmarkTextFill,
         label: "Assignments",
         href: "/list/assignments",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/result.png",
+        j: BsClipboardCheckFill,
         label: "Results",
         href: "/list/results",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/attendance.png",
+        j: FaUsers,
         label: "Attendance",
         href: "/list/attendance",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/calendar.png",
+        j: MdOutlineEventNote,
         label: "Events",
         href: "/list/events",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/message.png",
+        j: MdOutlineMessage,
         label: "Messages",
         href: "/list/messages",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/announcement.png",
+        j: IoIosMegaphone,
         label: "Announcements",
         href: "/list/announcements",
         visible: ["admin", "teacher", "student", "parent"],
       },
     ],
   },
+
   {
     title: "OTHER",
     items: [
       {
-        icon: "/profile.png",
+        j: CgProfile,
         label: "Profile",
         href: "/profile",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/setting.png",
+        j: IoSettingsSharp,
         label: "Settings",
         href: "/settings",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/logout.png",
+        j: RiLogoutBoxRFill,
         label: "Logout",
         href: "/logout",
         visible: ["admin", "teacher", "student", "parent"],
@@ -112,3 +129,58 @@ const menuItems = [
     ],
   },
 ];
+
+
+
+
+
+
+export default function Menu(){
+
+const mynavbar=menuItems.map(i=>{
+return(
+<>
+  <div className="flex flex-col gap-2" key={i.title}>
+    <span className= "hidden lg:block  text-gray-400 font-light my-4">{i.title}</span>
+
+
+
+
+
+      {i.items.map(item=>{
+        return(<>
+
+        {item.visible.includes(role)?  <Link href={item.href} className="flex gap-2 hover:bg-[#3ee97de4]  text-white hover:text-black justify-center px-1 rounded-sm items-center lg:justify-start  py-2">
+              {/* <Image width={32} height={32} src={item.icon} alt=""  /> */}
+                {item.j? <item.j color="#fff" size={32} /> : <></> }
+              <span className= "hidden lg:block ">{item.label}</span>
+            </Link>:<></>}
+          
+          </>)
+      })}
+
+
+
+
+      
+  </div>
+</>
+
+) 
+
+
+
+})
+
+  return(
+  <div className="mt-4 text-sm">
+
+    {mynavbar}
+
+
+
+
+  </div> 
+  
+)
+}

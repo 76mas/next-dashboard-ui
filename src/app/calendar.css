@@ -1,0 +1,837 @@
+@charset "UTF-8";
+
+/* CSS Variables for consistent theming */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --success-color: #74ff82;
+  --info-color: #22f2ef;
+  --warning-color: #3ee97d;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --backdrop-blur: blur(20px);
+  --border-radius: 16px;
+  --shadow-subtle: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Main Calendar Container */
+.studentpage {
+  background: var(--glass-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-elevated);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  padding: 24px;
+  margin: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.studentpage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-gradient);
+  opacity: 0.05;
+  pointer-events: none;
+  border-radius: var(--border-radius);
+}
+
+/* Base Button Styles */
+.rbc-btn {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  transition: var(--transition);
+}
+
+button.rbc-btn {
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  cursor: pointer;
+}
+
+button[disabled].rbc-btn {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Calendar Base */
+.rbc-calendar {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  position: relative;
+}
+
+.rbc-calendar *,
+.rbc-calendar *:before,
+.rbc-calendar *:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* Utility Classes */
+.rbc-abs-full,
+.rbc-row-bg {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.rbc-ellipsis,
+.rbc-show-more,
+.rbc-row-segment .rbc-event-content,
+.rbc-event-label {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rbc-rtl {
+  direction: rtl;
+}
+
+.rbc-off-range {
+  color: var(--text-muted);
+}
+
+.rbc-off-range-bg {
+  background: #ffffff0d;
+}
+
+/* Header Styles */
+.rbc-header {
+  overflow: hidden;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 0%;
+  flex: 1 0 0%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 16px 12px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 14px;
+  min-height: 0;
+  border-bottom: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+}
+
+.rbc-header + .rbc-header {
+  border-left: 1px solid var(--glass-border);
+}
+
+.rbc-rtl .rbc-header + .rbc-header {
+  border-left-width: 0;
+  border-right: 1px solid var(--glass-border);
+}
+
+.rbc-header > a,
+.rbc-header > a:active,
+.rbc-header > a:visited {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.rbc-header > a:hover {
+  color: var(--success-color);
+}
+
+/* Button Link */
+.rbc-button-link {
+  color: inherit;
+  background: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  transition: var(--transition);
+}
+
+/* Row Content */
+.rbc-row-content {
+  position: relative;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 4;
+}
+
+.rbc-row-content-scrollable {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rbc-row-content-scrollable .rbc-row-content-scroll-container {
+  height: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.rbc-row-content-scrollable .rbc-row-content-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Today Highlight */
+.rbc-today {
+  background: linear-gradient(135deg, rgba(116, 255, 130, 0.1), rgba(62, 233, 125, 0.1));
+  border-radius: 8px;
+  position: relative;
+}
+
+.rbc-today::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--success-color);
+  opacity: 0.1;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* Toolbar Redesign */
+.rbc-toolbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 16px;
+  padding: 20px;
+  background: var(--glass-bg);
+  border-radius: var(--border-radius);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Hide first button group (navigation) */
+.rbc-btn-group:first-child {
+  display: none !important;
+}
+
+.rbc-toolbar .rbc-toolbar-label {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  padding: 0 20px;
+  text-align: right !important;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 24px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* View Toggle Buttons */
+.rbc-btn-group:last-child {
+  font-size: 13px !important;
+  margin-right: 20px;
+  background-color: transparent !important;
+  display: flex;
+  gap: 4px;
+  border-radius: 12px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+}
+
+.rbc-btn-group:last-child button {
+  border: 1px solid var(--glass-border) !important;
+  background-color: transparent !important;
+  color: var(--text-secondary);
+  margin-left: 0 !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: var(--transition);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+}
+
+.rbc-btn-group:last-child button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-subtle);
+}
+
+.rbc-toolbar button.rbc-active {
+  background: linear-gradient(135deg, var(--success-color), var(--warning-color)) !important;
+  box-shadow: var(--shadow-subtle) !important;
+  color: #040a0a !important;
+  font-weight: 600;
+  border: none !important;
+  transform: translateY(-2px);
+}
+
+.rbc-toolbar button {
+  transition: var(--transition) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.rbc-toolbar button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.rbc-toolbar button:hover::before {
+  left: 100%;
+}
+
+/* Button Group Styling */
+.rbc-btn-group {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.rbc-btn-group > button:first-child:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.rbc-btn-group > button:last-child:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.rbc-btn-group > button:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.rbc-btn-group button + button {
+  margin-left: -1px;
+}
+
+.rbc-btn-group + .rbc-btn-group,
+.rbc-btn-group + button {
+  margin-left: 10px;
+}
+
+/* Time View Specific */
+.rbc-time-view {
+  display: flex; /* Keep flex for overall column layout */
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 20px;
+  min-height: 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Hide time header (as requested) */
+.rbc-time-header {
+  display: none !important;
+}
+
+/* Time Content - Crucial for column layout */
+.rbc-time-content {
+  display: flex;
+  flex: 1 0 0%;
+  align-items: flex-start;
+  width: 100%;
+  border: none !important;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* This is the key fix: allow individual day slots to be flexible */
+.rbc-time-content > .rbc-day-slot {
+  flex: 1 0 0%; /* Ensures each day slot takes equal width */
+  min-width: 0; /* Prevents overflow */
+  border-left: 1px solid rgba(255, 255, 255, 0.05); /* Add subtle day divider */
+}
+
+/* Remove initial border-left for the first day-slot */
+.rbc-time-content > .rbc-day-slot:first-child {
+  border-left: none;
+}
+
+.rbc-rtl .rbc-time-content > .rbc-day-slot:first-child {
+  border-right: none;
+}
+
+.rbc-time-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rbc-time-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.rbc-time-content::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 3px;
+}
+
+.rbc-time-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Time Gutter */
+.rbc-time-gutter.rbc-time-column {
+  font-size: 12px !important;
+  border-bottom: none !important;
+  background-color: transparent !important;
+  color: var(--text-secondary);
+  font-weight: 500;
+  flex-shrink: 0; /* Prevent time gutter from shrinking too much */
+  width: 60px; /* Give it a fixed width */
+  text-align: center; /* Center time labels */
+}
+
+.rbc-time-gutter.rbc-time-column .rbc-timeslot-group {
+  padding: 0px 5px !important; /* Adjust padding for smaller width */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100%; /* Ensure it fills the slot height */
+}
+
+/* Time Slots */
+.rbc-timeslot-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  min-height: 60px;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: transparent !important;
+  position: relative;
+}
+
+.rbc-timeslot-group:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rbc-time-slot:first-child {
+  border-top: none !important;
+  color: var(--text-secondary) !important;
+  border-bottom: none !important;
+}
+
+.rbc-time-slot:last-child {
+  color: var(--text-secondary) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.rbc-time-slot {
+  flex: 1 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rbc-time-slot.rbc-now {
+  font-weight: bold;
+  color: var(--success-color) !important;
+}
+
+/* Day Slot */
+.rbc-day-slot {
+  position: relative;
+  font-size: 14px !important;
+  border-bottom: none !important; /* Keep this to avoid extra lines */
+}
+
+/* Crucial: Event Container within a Day Slot */
+.rbc-day-slot .rbc-events-container {
+  /* Restore default positioning for events */
+  bottom: 0;
+  left: 0;
+  position: absolute; /* Events need to be absolutely positioned within time slots */
+  right: 0;
+  top: 0;
+  padding: 0 5px; /* Add some horizontal padding for events */
+
+  /* Remove flex properties that were causing stacking */
+  display: block !important;
+  flex-direction: unset !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+
+  /* Reset margin-right to default behavior or remove it */
+  margin-right: 0;
+}
+
+/* Events Styling */
+.rbc-event {
+  border: none !important;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: var(--shadow-subtle);
+  box-shadow: var(--shadow-subtle);
+  margin: 0 0 5px 0 !important; /* Adjust margins to stack events vertically within their space */
+  padding: 8px 12px !important; /* Slightly reduced padding for better fit */
+  border-radius: 12px;
+  color: #040a0a !important;
+  cursor: pointer;
+  width: 100% !important; /* Events should take full width of their allocated space */
+  height: auto !important; /* Allow height to be determined by content or calendar logic */
+  min-height: 40px; /* Minimum height for readability */
+  text-align: left;
+  transition: var(--transition);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  font-weight: 600;
+  position: absolute; /* Keep absolute for proper placement in time slots */
+  overflow: hidden;
+}
+
+.rbc-event::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  opacity: 0.9;
+  border-radius: 12px;
+}
+
+.rbc-event > * {
+  position: relative;
+  z-index: 1;
+}
+
+.rbc-event:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Event Color Variations */
+.rbc-event:nth-child(1) {
+  background: linear-gradient(135deg, var(--success-color), #5ae670) !important;
+}
+
+.rbc-event:nth-child(2) {
+  background: linear-gradient(135deg, var(--info-color), #00d4d4) !important;
+}
+
+.rbc-event:nth-child(3) {
+  background: linear-gradient(135deg, var(--warning-color), #2bc77a) !important;
+}
+
+.rbc-event:nth-child(4) {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+}
+
+.rbc-event:nth-child(5) {
+  background: linear-gradient(135deg, #f093fb, #f5576c) !important;
+}
+
+.rbc-event:nth-child(6) {
+  background: linear-gradient(135deg, #4facfe, #00f2fe) !important;
+}
+
+.rbc-event:nth-child(7) {
+  background: linear-gradient(135deg, #43e97b, #38f9d7) !important;
+}
+
+.rbc-event:nth-child(8) {
+  background: linear-gradient(135deg, #fa709a, #fee140) !important;
+}
+
+.rbc-event.rbc-selected {
+  transform: scale(1.05);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.rbc-event:focus {
+  outline: 3px solid rgba(116, 255, 130, 0.5);
+  outline-offset: 2px;
+}
+
+/* Event Label */
+.rbc-event-label {
+  font-size: 11px;
+  color: rgba(4, 10, 10, 0.7) !important;
+  margin-bottom: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rbc-event-content {
+  width: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0;
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+/* Show More Button */
+.rbc-show-more {
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  z-index: 4;
+  font-weight: 600;
+  font-size: 12px;
+  height: auto;
+  line-height: normal;
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: var(--transition);
+}
+
+.rbc-show-more:hover,
+.rbc-show-more:focus {
+  color: var(--success-color);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Selected Cell */
+.rbc-selected-cell {
+  background: linear-gradient(135deg, rgba(116, 255, 130, 0.2), rgba(62, 233, 125, 0.2));
+  border-radius: 8px;
+}
+
+/* Slot Selection */
+.rbc-slot-selection {
+  z-index: 10;
+  position: absolute;
+  background: linear-gradient(135deg, rgba(116, 255, 130, 0.3), rgba(62, 233, 125, 0.3));
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  color: var(--text-primary);
+  font-size: 12px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--success-color);
+  font-weight: 600;
+}
+
+.rbc-slot-selecting {
+  cursor: move;
+}
+
+/* Current Time Indicator */
+.rbc-current-time-indicator {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--success-color), var(--info-color));
+  pointer-events: none;
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(116, 255, 130, 0.6);
+}
+
+.rbc-current-time-indicator::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  background: var(--success-color);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(116, 255, 130, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rbc-toolbar {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .rbc-toolbar .rbc-toolbar-label {
+    text-align: center !important;
+    font-size: 20px;
+  }
+
+  .rbc-btn-group:last-child {
+    margin-right: 0;
+  }
+
+  .studentpage {
+    margin: 8px;
+    padding: 16px;
+  }
+
+  .rbc-event {
+    width: 95% !important;
+    margin: 4px !important;
+    padding: 8px 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .rbc-toolbar .rbc-toolbar-label {
+    font-size: 18px;
+  }
+
+  .rbc-btn-group:last-child button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .rbc-event {
+    min-height: 40px;
+    font-size: 12px;
+  }
+
+  .rbc-event-label {
+    font-size: 10px;
+  }
+}
+
+/* Animation for smooth transitions */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rbc-event {
+  animation: slideInUp 0.3s ease-out;
+}
+
+/* Loading state */
+.rbc-calendar.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.rbc-calendar.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid var(--success-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for better accessibility */
+.rbc-btn:focus-visible,
+.rbc-button-link:focus-visible {
+  outline: 2px solid var(--success-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-bg: rgba(0, 0, 0, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+  }
+
+  .rbc-event {
+    border: 2px solid #ffffff !important;
+  }
+}
